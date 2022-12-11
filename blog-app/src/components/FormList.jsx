@@ -1,4 +1,5 @@
 import React from "react";
+import "./FormList.css";
 
 export default function FormList({ saveTweets }) {
   const [content, setContent] = React.useState([""]);
@@ -7,6 +8,7 @@ export default function FormList({ saveTweets }) {
   return (
     <div>
       <input
+        className="TextInput"
         type="text"
         value={content}
         onChange={(e) => {
@@ -15,7 +17,11 @@ export default function FormList({ saveTweets }) {
         }}
         placeholder="What you have in mind..."
       />
-      <button disabled={disable} onClick={() => saveTweets(content)}>
+      <button
+        className="TweetButton"
+        disabled={disable}
+        onClick={() => saveTweets(content)}
+      >
         Tweet
       </button>
     </div>

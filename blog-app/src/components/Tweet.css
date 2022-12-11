@@ -1,0 +1,23 @@
+.TweetBox {
+  background-color: #343a40;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  color: white;
+  width: 32%;
+  left: 659px;
+  position: relative;
+}
+
+.TweetHeader {
+  justify-content: space-between;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  color: lightgray;
+}

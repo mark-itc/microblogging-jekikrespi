@@ -1,0 +1,28 @@
+.FormList {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 100vw;
+}
+
+.TweetButton {
+  border: 2px;
+  background-color: rgb(83, 168, 196);
+  position: relative;
+  top: 65px;
+  left: -44px;
+  color: white;
+  border-radius: 4px;
+  font-size: 22px;
+}
+
+.TextInput {
+  box-sizing: border-box;
+  position: relative;
+  width: 600px;
+  height: 180px;
+  left: 55px;
+  top: 5px;
+  border: 2px solid#cccccc;
+  border-radius: 6px;
+}

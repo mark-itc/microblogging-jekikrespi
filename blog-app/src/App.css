@@ -1,25 +1,6 @@
 .App {
-  text-align: center;
-}
-
-.FormList {
   display: flex;
   flex-direction: column;
-}
-
-.TweetList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 180px);
-  height: 100%;
-  grid-gap: 1rem;
-  margin: auto;
-  width: 60%;
-}
-
-.Tweet {
-  background-color: lightblue;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid lightgray;
-  text-align: left;
+  text-align: center;
+  background-color: rgb(20, 18, 18);
 }

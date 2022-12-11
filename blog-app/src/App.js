@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import FormList from "./components/FormList";
 import TweetList from "./components/TweetList";
 import { getStorage, setStorage } from "./services/storage";
 
 function App() {
-  const [tweets, setTweets] = React.useState(getStorage());
+  const [tweets, setTweets] = React.useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const saveTweets = (content) => {
+  useEffect(() => {
+    const getFecth = async () => {
+      setLoading(true);
+      const data = await getStorage();
+      setLoading(false);
+      setTweets(data);
+    };
+    getFecth();
+  }, []);
+
+  const saveTweets = async (content) => {
     const newTweet = {
       content,
-      name: "jeki",
+      userName: "jeki",
       date: new Date().toISOString(),
     };
-    setTweets([...tweets, newTweet]);
-    setStorage([...tweets, newTweet]);
+
+    try {
+      await setStorage(newTweet);
+      setTweets([...tweets, newTweet]);
+      setError("");
+    } catch (e) {
+      setError("Cant save tweet");
+    }
   };
   return (
     <div className="App">
       <FormList saveTweets={saveTweets} />
-      <TweetList tweets={tweets} />
+      <h5 style={{ color: "red" }}>{error}</h5>
+      {loading ? "loading..." : <TweetList tweets={tweets} />}
     </div>
   );
 }
