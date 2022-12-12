@@ -7,23 +7,35 @@ export default function FormList({ saveTweets }) {
 
   return (
     <div>
-      <input
+      <textarea
         className="TextInput"
-        type="text"
+        type="textarea"
         value={content}
         onChange={(e) => {
-          setdisable(e.target.value.length > 140);
-          setContent(e.target.value);
+          if (e.target.value.length > 140) {
+            setdisable(true);
+          } else {
+            setdisable(false);
+            setContent(e.target.value);
+          }
         }}
         placeholder="What you have in mind..."
-      />
-      <button
-        className="TweetButton"
-        disabled={disable}
-        onClick={() => saveTweets(content)}
-      >
-        Tweet
-      </button>
+      ></textarea>
+      <div className="textArea">
+        {disable && (
+          <p className="alert">
+            {" "}
+            "The Tweet can't contian more than 140 chars"
+          </p>
+        )}
+        <button
+          className="TweetButton"
+          disabled={disable}
+          onClick={() => saveTweets(content)}
+        >
+          Tweet
+        </button>
+      </div>
     </div>
   );
 }

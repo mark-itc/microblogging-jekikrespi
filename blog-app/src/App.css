@@ -3,4 +3,55 @@
   flex-direction: column;
   text-align: center;
   background-color: rgb(20, 18, 18);
+  height: 100vh;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.navBar {
+  width: 40%;
+  height: 50px;
+  color: aliceblue;
+  background-color: gray;
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 6px;
+  position: relative;
+  left: 31%;
+}
+
+.userNameText {
+  height: 50px;
+  width: 27%;
+  border-radius: 6px;
+  border-color: white;
+  color: white;
+  background-color: rgb(20, 18, 18);
+}
+
+.profileHeader {
+  color: white;
+  font-weight: 400;
+  width: 75%;
+}
+
+.userHeader {
+  color: white;
+  font-weight: 400;
+  width: 75%;
+}
+
+.SaveButton {
+  height: 33px;
+  width: 3%;
+  border-radius: 6px;
+  border-color: white;
+  color: white;
+  background-color: blue;
+  top: 43%;
+  right: 3%;
+  position: relative;
 }

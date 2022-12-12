@@ -1,44 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
-import FormList from "./components/FormList";
-import TweetList from "./components/TweetList";
-import { getStorage, setStorage } from "./services/storage";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Profile from "./views/Profile";
+import Home from "./views/Home";
+import NavBar from "./components/NavBar";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+  },
+]);
 function App() {
-  const [tweets, setTweets] = React.useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const getFecth = async () => {
-      setLoading(true);
-      const data = await getStorage();
-      setLoading(false);
-      setTweets(data);
-    };
-    getFecth();
-  }, []);
-
-  const saveTweets = async (content) => {
-    const newTweet = {
-      content,
-      userName: "jeki",
-      date: new Date().toISOString(),
-    };
-
-    try {
-      await setStorage(newTweet);
-      setTweets([...tweets, newTweet]);
-      setError("");
-    } catch (e) {
-      setError("Cant save tweet");
-    }
-  };
   return (
     <div className="App">
-      <FormList saveTweets={saveTweets} />
-      <h5 style={{ color: "red" }}>{error}</h5>
-      {loading ? "loading..." : <TweetList tweets={tweets} />}
+      <NavBar />
+      <RouterProvider router={router} />
     </div>
   );
 }

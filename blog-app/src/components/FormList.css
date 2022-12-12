@@ -9,11 +9,11 @@
   border: 2px;
   background-color: rgb(83, 168, 196);
   position: relative;
-  top: 65px;
-  left: -44px;
   color: white;
   border-radius: 4px;
-  font-size: 22px;
+  font-size: 20px;
+  left: 89%;
+  height: 3%;
 }
 
 .TextInput {
@@ -21,8 +21,24 @@
   position: relative;
   width: 600px;
   height: 180px;
-  left: 55px;
+  left: 21px;
   top: 5px;
   border: 2px solid#cccccc;
   border-radius: 6px;
+}
+
+.alert {
+  color: red;
+  position: relative;
+  left: 7%;
+}
+
+.textArea {
+  box-sizing: border-box;
+  position: relative;
+  top: -58px;
+  display: flex;
+  justify-content: space-between;
+  left: 34%;
+  width: 600px;
 }
