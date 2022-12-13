@@ -11,13 +11,21 @@ export default function Home() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const getFecth = async () => {
+    const initTweets = async () => {
       setLoading(true);
-      const data = await getStorage();
+      await getFetch();
       setLoading(false);
+    };
+
+    const getFetch = async () => {
+      const data = await getStorage();
       setTweets(data);
     };
-    getFecth();
+    initTweets();
+    const tweetInterval = setInterval(getFetch, 2000);
+    return () => {
+      clearInterval(tweetInterval);
+    };
   }, []);
 
   const saveTweets = async (content) => {
@@ -39,7 +47,11 @@ export default function Home() {
     <div>
       <FormList saveTweets={saveTweets} />
       <h5 style={{ color: "red" }}>{error}</h5>
-      {loading ? "loading..." : <TweetList tweets={tweets} />}
+      {loading ? (
+        <h2 style={{ color: "white" }}>loading...</h2>
+      ) : (
+        <TweetList tweets={tweets} />
+      )}
     </div>
   );
 }
