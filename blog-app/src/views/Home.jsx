@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import FormList from "../components/FormList";
 import TweetList from "../components/TweetList";
 import { getStorage, setStorage } from "../services/storage";
 import { getUserName } from "../services/username";
+import TweetContext from "../contexts/TweetContext";
 
 export default function Home() {
-  const [tweets, setTweets] = React.useState([]);
+  const { tweets, setTweets } = useContext(TweetContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
