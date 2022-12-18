@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import TweetContext from "../contexts/TweetContext";
 
 export default function TweetProvider({ children }) {

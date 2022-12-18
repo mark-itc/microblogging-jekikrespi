@@ -1,36 +1,28 @@
-const url =
-  "https://micro-blogging-dot-full-stack-course-services.ew.r.appspot.com/tweet";
+import { db } from "../firebase";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 
-const setStorage = async (tweet) => {
-  const sentTweet = {
-    content: tweet.content,
-    userName: tweet.userName,
-    date: tweet.date,
-  };
-  const response = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify(sentTweet),
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  });
+const getTweets = async () => {
+  try {
+    const snapshot = await getDocs(collection(db, "TweetCollection"));
 
-  if (response.status === 200) return response;
-  else {
-    throw Error();
+    const newData = snapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+
+    return newData;
+  } catch (err) {
+    console.log(err);
   }
 };
 
-const getStorage = async () => {
-  const response = await fetch(url, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-  console.log(response);
-  const data = await response.json();
-
-  return data.tweets;
+const setTweet = async (tweet) => {
+  try {
+    await addDoc(collection(db, "TweetCollection"), tweet);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-export { setStorage, getStorage };
+
+export { getTweets, setTweet };
